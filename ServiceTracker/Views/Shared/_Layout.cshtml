@@ -29,7 +29,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
     <script>
-        window.PostTicketUrl = 'http://10.100.67.74:7200/api/generateticket';
         window.PostMethod = function (url, body) {
             return fetch(url, {
                 method: "POST",
