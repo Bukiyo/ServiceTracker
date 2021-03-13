@@ -1,0 +1,175 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+}
+
+@section Styles {
+    <style>
+        body {
+            background: url('/Images/chrisppt.PNG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            border: none;
+            opacity: 1;
+            height: 100vh;
+            width: 100%;
+            margin: 0;
+            padding: 3rem;
+        }
+
+        .card {
+            background: linear-gradient(155deg, #c30d0552, #e5e5e0 100%);
+            border: 1.6px solid white;
+            max-width: 13rem;
+            height: 10em;
+            transition: all 0.4s ease;
+        }
+
+        .card-title {
+            color: #c00c04;
+            font-weight: bold;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+
+        .card:hover {
+            transform: scale(1.1);
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <div class="row mb-5">
+        <div class="col-sm-6">
+            <h1 class="text-light">Welcome,</h1>
+            <h5 class="text-light">Select how you want us to serve you today</h5>
+        </div>
+        <div class="col-sm-6 text-right">
+            <img src="~/Images/UBA.png" alt="logo" class="img-fluid" style="height: 5rem;">
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-3 left">
+
+        </div>
+
+
+        <div class="col-sm-9 right">
+            <div class="card-deck mb-4">
+
+                <div class="card">
+                    <a href="customerEnquiry.html" style="text-decoration: none;">
+                        <div class="card-body">
+                            <h6 class="card-title">CUSTOMER ENQUIRY</h6>
+                            <img src="~/Images/Mask Group 3.svg" class="img-fluid" alt="...">
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="card">
+                    <a href="accountOpening.html" style="text-decoration: none;">
+                        <div class="card-body">
+                            <h6 class="card-title">ACCOUNT OPENING</h6>
+                            <img src="~/Images/Mask Group 6.svg" class="img-fluid" alt="...">
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="card">
+                    <a href="cashDeposit.html" style="text-decoration: none;">
+                        <div class="card-body">
+                            <h6 class="card-title">CASH DEPOSIT</h6>
+                            <img src="~/Images/Mask Group 4.svg" class="img-fluid" alt="...">
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="card-deck mb-4">
+
+                <div class="card">
+                    <a asp-action="CashWithdrawal" style="text-decoration: none;">
+                        <div class="card-body">
+                            <h6 class="card-title">CASH WITHDRAWAL</h6>
+                            <img src="~/Images/Mask Group 5.svg" class="img-fluid" alt="...">
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="card">
+                    <a href="advancingLoan.html" style="text-decoration: none;">
+                        <div class="card-body">
+                            <h6 class="card-title">ADVANCING LOAN</h6>
+                            <img src="~/Images/Mask Group 2.svg" class="img-fluid" alt="...">
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="card">
+                    <a href="foreignExchange.html" style="text-decoration: none;">
+                        <div class="card-body text-center">
+                            <h6 class="card-title">FOREIGN EXCHANGE</h6>
+                            <img src="~/Images/Group 21.svg" class="img-fluid" alt="..." style="width: 6rem;">
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-1">
+
+                </div>
+
+                <div class="card-deck col-sm-10">
+                    <div class="card">
+                        <a href="fundTrns.html" style="text-decoration: none;">
+                            <div class="card-body text-center">
+                                <h6 class="card-title">FUND TRANSFER</h6>
+                                <img src="~/Images/cash-back.svg" class="img-fluid" alt="..." style="width: 6rem;">
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <div class="card">
+                        <a href="privateBanking.html" style="text-decoration: none;">
+                            <div class="card-body text-center">
+                                <h6 class="card-title">PRIVATE BANKING</h6>
+                                <img src="~/Images/Group 22.svg" class="img-fluid" alt="..." style="width: 4.5rem;">
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-1">
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

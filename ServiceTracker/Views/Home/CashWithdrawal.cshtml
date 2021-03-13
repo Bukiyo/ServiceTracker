@@ -1,0 +1,429 @@
+﻿@{
+    ViewData["Title"] = "Cash Withdrawal";
+}
+
+@section Styles {
+    <style>
+        body {
+            background: linear-gradient(142deg, #1d1d1dbf, #00000052 100%), url('/Images/andreah.png');
+            background-size: cover;
+            /*background-position: center;*/
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            border: none;
+            opacity: 1;
+            height: 100vh;
+            width: 100%;
+            margin: 0;
+        }
+
+        .card {
+            background: linear-gradient(155deg, #e5e5e0, #5c585852 100%);
+            border: 1.6px solid white;
+            max-width: 18rem;
+            height: 5em;
+            white-space: nowrap;
+        }
+
+        .card-title {
+            color: #c00c04;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+
+        button {
+            outline: none !important;
+        }
+
+        input[type="checkbox"] {
+            zoom: 2.5;
+        }
+
+
+        .form-check-input {
+            position: relative;
+            left: 1.5rem;
+            bottom: 0.2rem;
+        }
+
+        .btn-wide {
+            width: 15rem;
+        }
+
+        .btn-danger {
+            background-color: #C00C04;
+            border-color: #C00C04;
+        }
+
+        #proceedModal > div > div {
+            height: 25rem;
+            background: linear-gradient(155deg, #e5e5e0, #5c585852 100%);
+            border: 1.6px solid white;
+        }
+
+        /* #proceedModal2 .modal-content{
+            background: linear-gradient(155deg, #e5e5e0, #5c585852 100%);
+            border: 1.6px solid white;
+        }
+
+        #proceedModal2 .col-form-label{
+            color: white;
+        } */
+
+        .modal-backdrop {
+            opacity: 0.8 !important;
+        }
+
+        #servSubCatCashWtdl {
+            position: relative;
+            left: 2em;
+            width: 37rem;
+        }
+
+        h5 {
+            font-size: 1.1rem;
+        }
+
+        .page-header .pull-left {
+            position: absolute;
+            left: 15px;
+            top: 0.5rem;
+        }
+
+        .close {
+            text-shadow: none;
+            opacity: 1;
+        }
+
+        /* sweetAlert */
+        body > div.swal2-container.swal2-center.swal2-backdrop-show > div {
+            border: 1px solid white;
+            white-space: nowrap;
+        }
+
+        #swal2-content > div > form > div > label {
+            color: white;
+            text-align: left;
+        }
+
+
+        #swal2-title {
+            color: #c00c04;
+            font-size: 1.5em;
+            position: absolute;
+        }
+
+        #swal2-content > div > form > div > div > p {
+            color: white;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        body > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-header > img {
+            margin-top: 3rem !important;
+        }
+
+        #swal2-content > div > form {
+            margin-top: 3rem !important;
+        }
+
+        .swal2-deny {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: #C00C04;
+        }
+    </style>
+}
+
+
+
+<div class="container-fluid mb-5">
+    <div class="row">
+        <div class="col-sm-12 page-header">
+
+            <a class="btn border-none text-white pull-left" asp-action="Index" role="button"><i class="fas fa-arrow-left" style="font-size: 1.5rem;"></i></a>
+            <h1 class="text-light mb-3 text-center">Cash Withdrawal</h1>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="d-flex justify-content-center row mb-5">
+
+        <div class="row row-cols-1 row-cols-md-3 w-75">
+            <div class="col mb-4">
+                <div class="card">
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <h5 class="card-title mt-2">Savings</h5>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="checkbox" value="Savings" id="savings">
+                                <label class="form-check-label" for="savings">
+
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card">
+
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <h5 class="card-title mt-2">Current</h5>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="checkbox" value="Current" id="current">
+                                <label class="form-check-label" for="current">
+
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card">
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <h5 class="card-title mt-2 text-left">Fixed</h5>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="checkbox" value="Fixed" id="fixed">
+                                <label class="form-check-label" for="fixed">
+
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card">
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <h5 class="card-title mt-2">Domiciliary</h5>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="checkbox" value="Domiciliary" id="domiciliary">
+                                <label class="form-check-label" for="domiciliary">
+
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(() => {
+
+            var serviceCode = "";
+            var subCategory = "";
+            //Only one checkbox is selectable
+            $('input[type="checkbox"]').on('change', function () {
+                $('input[name="' + this.name + '"]').not(this).prop('checked', false);
+            });
+
+            //On checking the checkbox, modal would pop up
+            $('input[type="checkbox"]').on('change', function (e) {
+                if (e.target.checked) {
+
+                    subCategory = $("input[name='checkbox']:checked").val();
+                    switch (subCategory) {
+                        case "Savings":
+                            serviceCode = CashWithdrawal.Savings
+                            break;
+
+                        case "Current":
+                            serviceCode = CashWithdrawal.Current
+                            break;
+
+                        case "Fixed":
+                            serviceCode = CashWithdrawal.Fixed
+                            break;
+
+                        case "Domiciliary":
+                            serviceCode = CashWithdrawal.Domiciliary
+                            break;
+
+                        default:
+                    }
+                    $('#proceedModal').modal();
+
+                }
+            });
+
+            $('#proceedModal').on('show.bs.modal', function () {
+
+
+                $('#customerDetails').on('submit', function (e) {
+                    e.preventDefault();
+                    $("#proceedModal").modal("hide");
+
+                    var customerName = $("#custName").val();
+                    var phoneNumber = $("#custNo").val();
+
+                    const swalWithExtraStyles = Swal.mixin({
+                        customClass: {
+                            confirmButton: 'btn btn-danger btn-wide',
+                            denyButton: 'btn',
+                            title: '#c00c04'
+                        },
+                        buttonsStyling: false
+                    })
+
+                    const swalPrint = Swal.mixin({
+                        customClass: {
+                            confirmButton: 'btn btn-danger btn-wide',
+                            denyButton: 'btn',
+                            title: 'text-white'
+                        },
+                        buttonsStyling: false
+                    })
+
+
+                    swalWithExtraStyles.fire({
+                        title: 'TICKET INFORMATION',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        focusConfirm: false,
+                        confirmButtonText: 'submit',
+                        confirmButtonAriaLabel: 'submit',
+                        showLoaderOnConfirm: 'true',
+                        denyButtonText: `<i class="fas fa-arrow-left ml-n2" style="font-size: 1rem;"></i>`,
+                        background: 'linear-gradient(155deg, #e5e5e0, #5c585852 100%)',
+                        backdrop: `rgba(0,0,0,0.8)`,
+                        html: `<div>
+                                                                <form>
+
+
+                                                                    <div class="form-group row">
+                                                                        <label for="cusNameCashWtdl" class ="col-sm-5 col-form-label">Customer Name:</label>
+                                                                        <div class="col-sm-7">
+                                                                            <p class="form-control-plaintext" id="cusNameCashWtdl">${customerName}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="cusPhoneCashWtdl" class="col-sm-5 col-form-label">Phone Number:</label>
+                                                                        <div class = "col-sm-7">
+                                                                            <p class="form-control-plaintext" id="cusPhoneCashWtdl">${phoneNumber}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="servCatCashWtdl" class ="col-sm-5 col-form-label">Service Category:</label>
+                                                                        <div class="col-sm-7">
+                                                                            <p class="form-control-plaintext" id="servCatCashWtdl">Cash Withdrawal</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for = "servSubCatCashWtdl" class = "col-sm-5 col-form-label" >Service Sub-Category: </label>
+                                                                        <div class="col-sm-7">
+                                                                            <p class="form-control-plaintext" id="servSubCatCashWtdl">${subCategory}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="timeCashWtdl" class="col-sm-5 col-form-label">Time:</label>
+                                                                        <div class="col-sm-7">
+                                                                            <p class="form-control-plaintext" id="timeCashWtdl">${new Date().toLocaleTimeString()}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class ="form-group row">
+                                                                        <label for="dateCashWtdl" class="col-sm-5 col-form-label"> Date:</label>
+                                                                        <div class="col-sm-7">
+                                                                            <p class="form-control-plaintext" id="dateCashWtdl">${new Date().toLocaleDateString()}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>`,
+                        preConfirm: (confirm) => {
+                            if (confirm) {
+                                return PostMethod(PostTicketUrl, JSON.stringify({
+                                    customerName: customerName,
+                                    customerPhone: phoneNumber,
+                                    seviceCode: serviceCode,
+                                    bookingDate: new Date(),
+                                    solid: "0392"
+                                })).catch(async (error) => {
+                                    console.error("error", error);
+                                    var err = await $.when(error).then(rese => {
+                                        console.error("rese", rese);
+                                        return rese;
+                                    });
+                                    throw Error(err);
+                                });
+                            }
+                        },
+                        allowOutsideClick: () => !Swal.isLoading()
+                    }).then((result) => {
+                        
+                            swalPrint.fire({
+                                title: 'THANK YOU!',
+                                imageUrl: '/Images/print.png',
+                                focusConfirm: false,
+                                confirmButtonText: 'Done',
+                                confirmButtonAriaLabel: 'Done',
+                                backdrop: `rgba(0,0,0,0.8)`,
+                                background: 'linear-gradient(155deg, #e5e5e0, #5c585852 100%)',
+                                html: `<p class="text-white mb-0">Your Ticket Has Been Printed Successfully</p>
+                                                   <p class="text-white">Please be patient as our customer agent attends to you.</p>`
+                            })
+
+
+                        
+
+
+                    })
+
+
+                });
+
+            });
+
+
+        });
+
+    </script>
+}
+

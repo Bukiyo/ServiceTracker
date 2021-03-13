@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Service Tracker</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome-free-5.15.2-web/fontawesome-free-5.15.2-web/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    @RenderSection("Styles", required: false)
+
+
+
+
+
+</head>
+<body>
+
+
+
+    @RenderBody()
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+    <script>
+        window.PostTicketUrl = 'http://10.100.67.74:7200/api/generateticket';
+        window.PostMethod = function (url, body) {
+            return fetch(url, {
+                method: "POST",
+                body: body,
+                headers: new Headers({
+                    'Content-Type': "application/json; charset=utf-8"
+                })
+            }).then(response => {
+                //console.log("post response", response);
+                if (response.redirected) {
+                    console.log("redirect is true");
+                    return window.location.href = "/";
+                }
+                if (!response.ok) {
+                    throw response.json();
+                }
+                return response.json();
+            });
+        }
+
+        window.CustomerEnquiry = {
+            Complaints: "A1",
+            ATMRequest: "A2",
+            OnlineBanking: "A3",
+            MobileBanking: "A4",
+            CreditCardRequest: "A5",
+            Others: "A6"
+        }
+
+        window.AccountOpening = {
+            Savings: "B1",
+            Current: "B2",
+            Fixed: "B3",
+            Domiciliary: "B4"
+        }
+
+        window.CashDeposit = {
+            Savings: "C1",
+            Current: "C2",
+            Fixed: "C3",
+            Domiciliary: "C4"
+        }
+
+        window.CashWithdrawal = {
+            Savings: "D1",
+            Current: "D2",
+            Fixed: "D3",
+            Domiciliary: "D4"
+        }
+
+        window.AdvancingLoan = {
+            TermLoans: "E1",
+            BankOverdraft: "E2",
+            LetterOfCredit: "E3",
+            BankGuarantee: "E4",
+            LeaseFinance: "E5",
+            ConstructionEquipment: "E6",
+            SMEcreditCards: "E7",
+            CommercialVehicle: "E8"
+        }
+
+
+    </script>
+
+    <div class="modal fade" id="proceedModal" tabindex="-1" role="dialog" aria-labelledby="proceedModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header border-0">
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="d-flex justify-content-center">
+                        <form id="customerDetails">
+                            <div class="form-group">
+                                <label for="custName" style="color: #c00c04">Name</label>
+                                <input type="text" class="form-control" id="custName" name="custName" required>
+
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="custNo" style="color: #c00c04">Phone Number</label>
+                                <input type="number" class="form-control" id="custNo" name="custNo" required>
+                            </div>
+                            <button type="submit" class="btn btn-danger btn-wide text-white mt-3" id="proceed">
+                                Proceed
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+</html>
+
+
